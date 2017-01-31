@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform, MenuController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { HomePage } from '../pages/home/home';
@@ -13,7 +13,7 @@ export class MyApp {
   home: any = HomePage;
   rootPage: any = this.home;
 
-  constructor(platform: Platform) {
+  constructor(platform: Platform, private menuCtrl: MenuController) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -24,5 +24,6 @@ export class MyApp {
 
   openPage(page){
     this.rootPage = page;
+    this.menuCtrl.close();
   }
 }
